@@ -32,7 +32,9 @@ The Critical Rays Scan Match SLAM is used for the production of the final map of
 •	Occupancy Grid Mapping Planner - https://github.com/etsardou/intelligent_robot_systems_2016/tree/master/art_ogmpp
 
 This package is needed for the creation of the path between the UGV and the selected target point of the explored map during the exploration.
-Installation
+
+
+#Installation
 
 1.	Insert the project into your catkin src folder (by default this is ~/catkin_ws/src).
 
