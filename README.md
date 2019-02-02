@@ -6,11 +6,11 @@ Research in efficient ways of collaboration for an Unmanned Aerial Vehicle (UAV)
 
 The ROS Packages and Simulations have been tested under Ubuntu 14.04.5 LTS (Trusty Tahr)
 
-Summary
+# Summary
 
 Read the Abstract inside the Thesis_Report.pdf file for a quick explanation of the collaboration techniques explored in this Thesis. For the investigation of the efficiency of those techniques 3 spaces has been created in Gazebo with a variety of obstacles.
 
-Pre-Installation
+# Pre-Installation
 
 (Α) ROS Indigo and Gazebo 2.2.6 must be installed in the Ubuntu. Instruction for installation of ROS and Gazebo are given in http://wiki.ros.org/indigo/Installation/Ubuntu
 
@@ -34,7 +34,7 @@ The Critical Rays Scan Match SLAM is used for the production of the final map of
 This package is needed for the creation of the path between the UGV and the selected target point of the explored map during the exploration.
 
 
-#Installation
+# Installation
 
 1.	Insert the project into your catkin src folder (by default this is ~/catkin_ws/src).
 
@@ -51,7 +51,7 @@ To run the exploration of the unknown space with the collaboration of both UAV (
 To run the exploration of the unknown space only with the UGV (Turtlebot2).
 
 
-Experimentation
+# Experimentation
 
 Feel free to experiment with the current package. To change any parameters of exploration or run it in your own map change the .yaml files inside the YAML_Files folder of the project which is located inside the experiments package.
 
