@@ -1,0 +1,74 @@
+############################### For Both Controllers ###################################
+# Flags
+debug: False
+turtlebot_save_progress_images: False
+color_rating: False
+limit_exploration: False
+map_discovery_purpose: 'exploration' #'coverage' #'combined'
+# Frames
+map_frame: 'map'
+turtlebot_base_odom_frame: 'turtlebot/odom'
+turtlebot_base_footprint_frame: 'turtlebot/base_footprint'
+turtlebot_base_link_frame: 'turtlebot/base_link'
+drone_odom_frame: 'drone_tf/odom'
+drone_base_footprint: 'drone_tf/base_footprint'
+drone_base_link: 'drone_tf/base_link'
+#	Topics
+ogm_topic: '/slam/occupancyGridMap'
+turtlebot_coverage_topic: '/turtlebot/coverage'
+drone_pub_image_topic: '/drone_taken_image'
+drone_pub_color_rating: '/drone_color_rating'
+# Services
+join_tree_srv: 'join_tree_srv'
+drone_control_srv: 'drone_control_srv'
+drone_explore_limit_srv: 'drone_explore_limit_srv'
+rate_potential_targets_srv: 'rate_potential_targets_srv'
+########################################################################################
+
+############################### For Turtlebot Controller ###############################
+# Flags
+print_velocities: False
+calculate_target: True
+initial_turn: True
+save_progress: True
+target_selector: 'not_random'
+# Topics
+# Subscribers
+turtlebot_laser_topic: '/turtlebot/scan'
+turtlebot_sonar_topic: '/turtlebot/scan'
+# Publishers
+turtlebot_speeds_topic: '/turtlebot/mobile_base/commands/velocity'
+turtlebot_robot_trajectory_topic: '/turtlebot/trajectory'
+turtlebot_path_topic: '/turtlebot/path'
+turtlebot_subgoals_topic: '/turtlebot/subgoals'
+turtlebot_curr_target_topic: '/turtlebot/current_target'
+turtlebot_goals_topic: '/turtlebot/goals'
+turtlebot_odom_topic: '/turtlebot/odom'
+# Parameters
+cell_size: 20
+near_field: 30
+map_resolution: 0.05
+max_linear_speed: 0.5
+max_angular_speed: 0.5
+# Save FIles Destination
+progress_file_name: '/home/vvv/catkin_ws/src/Thesis/experiments/Results/Monitoring_Progress.txt'
+
+# Map Size
+# Test Space 1:
+x_min_size: 160
+x_max_size: 430
+y_min_size: 140
+y_max_size: 450
+
+# Test Space 2:
+#x_min_size: 160
+#x_max_size: 420
+#y_min_size: 160
+#y_max_size: 440
+
+# Test Space 3:
+#x_min_size: 120 
+#x_max_size: 410 
+#y_min_size: 140 
+#y_max_size: 438 
+########################################################################################

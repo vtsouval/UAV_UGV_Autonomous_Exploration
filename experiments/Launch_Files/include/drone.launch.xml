@@ -1,0 +1,41 @@
+<!-- Spawns Drone inside a Gazebo simulation -->
+<launch>
+
+	<arg name="robot_name"	default="drone"/>
+
+	<arg name="x"	default="0"/>
+	<arg name="y"	default="0"/>
+	<arg name="z" 	default="0"/>
+	<arg name="R" 	default="0"/>
+	<arg name="P" 	default="0"/>
+	<arg name="Y" 	default="0"/>
+
+	<param name="tf_prefix" type="string" value="$(arg robot_name)_tf"/>
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find cvg_sim_gazebo)/urdf/quadrotor_sensors.urdf.xacro' name:=$(arg robot_name)" />
+
+	<node pkg="gazebo_ros" type="spawn_model" name="spawn_$(arg robot_name)" 
+   			args="	-x '$(arg x)'
+				-y '$(arg y)'
+				-z '$(arg z)'
+				-R '$(arg R)'
+				-P '$(arg P)'
+				-Y '$(arg Y)'
+				-unpause
+				-urdf
+				-param robot_description 
+				-model $(arg robot_name)" respawn="false">
+	</node>
+
+	<node name="ground_truth_to_tf" pkg="message_to_tf" type="message_to_tf" output="screen">
+		<param name="odometry_topic"		type="string"	value="ground_truth/state"/>
+		<param name="frame_id"					type="string"	value="drone_tf/odom"/>	
+		<param name="footprint_frame_id"	type="string"	value="drone_tf/base_footprint"/>
+		<param name="stabilized_frame_id"	type="string"	value="drone_tf/base_stabilized"/>
+		<param name="child_frame_id"			type="string"	value="drone_tf/base_link"/>
+	</node>
+	
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="30.0"/>
+	</node>
+
+</launch>

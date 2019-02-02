@@ -1,0 +1,6 @@
+# Request: Send a Signal to Joint Tree
+bool status
+---
+# Return: Return Status of Operation
+bool return_status
+

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+    - Base      : kobuki
+    - Stacks    : hexagons
+    - 2d Sensor : hokuyo
+    - Tag	: ar_tag
+-->
+
+<robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_common_library.urdf.xacro" />
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
+  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/sensors/hokuyo.urdf.xacro"/>
+  <!-- I will add a .urdf.xacro file with ar_tag!/-->
+  <xacro:include filename="$(find turtlebot_description)/urdf/tags/ar_tag.urdf.xacro"/>
+
+  <kobuki/>
+  <stack_hexagons parent="base_link"/>
+  <sensor_hokuyo  parent="base_link"/>
+  <turtlebot_tag  parent="base_link"/>
+
+</robot>

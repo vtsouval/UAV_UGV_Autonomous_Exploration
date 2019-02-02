@@ -1,0 +1,38 @@
+<!-- Spawns Turtlebot inside a Gazebo simulation -->
+<launch>
+
+	<arg name="robot_name"		default="turtlebot"/>
+	<arg name="base"				value="$(optenv TURTLEBOT_BASE		kobuki)"/>
+	<arg name="battery"			value="$(optenv TURTLEBOT_BATTERY	/proc/acpi/battery/BAT0)"/>
+	<arg name="stacks"			value="$(optenv TURTLEBOT_STACKS	hexagons)"/>
+	<arg name="3d_sensor"		value="$(optenv TURTLEBOT_3D_SENSOR	kinect)"/>
+	<arg name="turtlebot_tag"	value="$(optenv TURTLEBOT_TAG )"/>
+
+	<arg name="x"	default="0"/>
+	<arg name="y"	default="0"/>
+	<arg name="z" 	default="0"/>
+	<arg name="R" 	default="0"/>
+	<arg name="P" 	default="0"/>
+	<arg name="Y" 	default="0"/>
+
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find turtlebot_description)/robots/$(arg base)_$(arg stacks)_$(arg 3d_sensor)$(arg turtlebot_tag).urdf.xacro' " />
+
+	<node pkg="gazebo_ros" type="spawn_model" name="spawn_$(arg robot_name)" 
+		args="  -x $(arg x)
+			-y $(arg y)
+			-z $(arg z)
+			-R $(arg R) 
+			-P $(arg P) 
+			-Y $(arg Y)  
+			-unpause 
+			-urdf 
+			-param robot_description 
+			-model $(arg robot_name)" respawn="false">
+	</node>
+ 
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="30.0"/>
+		<param name="tf_prefix" type="string" value="$(arg robot_name)"/>
+	</node>
+
+</launch>

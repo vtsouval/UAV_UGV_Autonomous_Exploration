@@ -1,0 +1,6 @@
+# Request: OGM Limits Point to Send Drone
+float64 x
+float64 y
+---
+# Return: Return the status of the Service
+bool status

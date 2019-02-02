@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+<!-- ////////////////////////////////////// Launch Parameters ////////////////////////////////////////////////////////// -->
+	<rosparam file="$(find experiments)/YAML_Files/exploration_turtlebot_only.yaml" command="load"/>
+	<rosparam file="$(find experiments)/YAML_Files/slam_parameters.yaml" command="load" ns="crsm_slam"/>    
+	<rosparam file="$(find experiments)/YAML_Files/bottom_camera_param.yaml" command="load"/>    
+ 	<rosparam file="$(find ogmpp_map_loader)/cfg/map_loader_params.yaml" command="load" />
+ 	<rosparam file="$(find ogmpp_planners)/cfg/prms_parameters.yaml" command="load" />
+ 	<rosparam file="$(find ogmpp_planners)/cfg/rrts_parameters.yaml" command="load" />
+ 	<rosparam file="$(find ogmpp_graph)/cfg/ogmpp_graph_properties.yaml" command="load" />
+	<arg name="rviz_config"	value="$(find experiments)/Rviz_Files/exploration_turtlebot_only.rviz"/>
+
+<!-- ////////////////////////////////////// Launch Robots ////////////////////////////////////////////////////////// -->
+	<include file="$(find experiments)/Launch_Files/turtlebot_only/robot.launch"/>
+<!-- ////////////////////////////////////// Launch OGM Planner ////////////////////////////////////////////////////////// -->
+ 	<node name="ogmpp_planners_node" type="ogmpp_planners" pkg="ogmpp_planners" output="log"/>  
+<!-- //////////////////////////////////// Launch SLAM for Turtlebot /////////////////////////////////////////////////// -->
+	<node name="crsm_slam_node" type="crsm_slam_node" pkg="crsm_slam" respawn="false" ns="crsm_slam" output="log" />
+<!-- ////////////////////////////////////// Launch TF Connector ////////////////////////////////////////////////////////// -->
+  	<node name="mat_tf_node" type="map_static_tf.py" pkg="turtlebot_controller" output="log"/>
+<!-- ////////////////////////////////////// Launch Turtlebot Controller ///////////////////////////////////////////////// -->
+	<node name="turtlebot_controller_node" type="main.py" pkg="turtlebot_controller" output="screen"/>
+<!-- ////////////////////////////////////// Launch RViz //////////////////////////////////////////////////// -->
+	<!--node pkg="rviz" type="rviz" name="rviz_node" args="-d $(arg rviz_config)"/-->
+</launch>

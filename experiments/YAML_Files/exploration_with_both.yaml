@@ -1,0 +1,102 @@
+############################### For Both Controllers #########################################
+# Flags
+debug: False
+turtlebot_save_progress_images: False
+color_rating: False
+limit_exploration: True
+#map_discovery_purpose: 'exploration'
+map_discovery_purpose: 'coverage'
+#map_discovery_purpose: 'combined'
+
+# Frames
+map_frame: 'map'
+turtlebot_base_odom_frame: 'turtlebot/odom'
+turtlebot_base_footprint_frame: 'turtlebot/base_footprint'
+turtlebot_base_link_frame: 'turtlebot/base_link'
+drone_odom_frame: 'drone_tf/odom'
+drone_base_footprint: 'drone_tf/base_footprint'
+drone_base_link: 'drone_tf/base_link'
+#	Topics
+ogm_topic: '/slam/occupancyGridMap'
+turtlebot_coverage_topic: '/turtlebot/coverage'
+drone_pub_image_topic: '/drone_taken_image'
+drone_pub_color_rating: '/drone_color_rating'
+# Services
+join_tree_srv: 'join_tree_srv'
+drone_control_srv: 'drone_control_srv'
+drone_explore_limit_srv: 'drone_explore_limit_srv'
+rate_potential_targets_srv: 'rate_potential_targets_srv'
+########################################################################################
+
+############################### For Turtlebot Controller ######################################
+# Flags
+print_velocities: False
+calculate_target: True
+initial_turn: True
+save_progress: True
+target_selector: 'not_random'
+# Topics
+# Subscribers
+turtlebot_laser_topic: '/turtlebot/scan'
+turtlebot_sonar_topic: '/turtlebot/scan'
+# Publishers
+turtlebot_speeds_topic: '/turtlebot/mobile_base/commands/velocity'
+turtlebot_robot_trajectory_topic: '/turtlebot/trajectory'
+turtlebot_path_topic: '/turtlebot/path'
+turtlebot_subgoals_topic: '/turtlebot/subgoals'
+turtlebot_curr_target_topic: '/turtlebot/current_target'
+turtlebot_goals_topic: '/turtlebot/goals'
+turtlebot_odom_topic: '/turtlebot/odom'
+# Parameters
+cell_size: 20
+near_field: 25
+map_resolution: 0.05
+max_linear_speed: 0.5
+max_angular_speed: 0.5
+# Save Files Destination
+progress_file_name: '/home/vvv/catkin_ws/src/Thesis/experiments/Results/Monitoring_Progress.txt'
+
+# Map Size
+# Test Space 1:
+#x_min_size: 160
+#x_max_size: 430
+#y_min_size: 140
+#y_max_size: 450
+
+# Test Space 2:
+x_min_size: 151
+x_max_size: 444
+y_min_size: 138
+y_max_size: 433
+
+# Test Space 3:
+#x_min_size: 160
+#x_max_size: 450
+#y_min_size: 140
+#y_max_size: 448
+
+# Test Space Small:
+#x_min_size: 190
+#x_max_size: 400
+#y_min_size: 180
+#y_max_size: 378
+########################################################################################
+
+############################### For Drone Controller ########################################
+# Frames
+ar_pose_frame: 'ar_marker'
+drone_camera_frame : 'ardrone_base_bottomcam'
+# Topics
+# Subscribers
+ar_pose_topic: '/ar_pose_marker'
+drone_camera_topic: '/ardrone/bottom/image_raw'
+drone_speed_topic: '/drone/cmd_vel'
+drone_takeoff_topic : '/drone/takeoff'
+drone_land_topic : '/drone/land'
+# Parameter
+exploration_height: 5.0
+localization_height: 3.0
+low_height: 1.8
+time_to_considered_marker_lost: 1.5
+#############################################################################################
+

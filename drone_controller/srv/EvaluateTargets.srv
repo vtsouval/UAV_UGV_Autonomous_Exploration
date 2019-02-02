@@ -1,0 +1,6 @@
+# Request: Two Arrays size of Num. of Nodes that hold [x,y] position  in Map!
+float64[] pos_x
+float64[] pos_y
+---
+# Return: Return the color weight calculated for each node!
+bool status

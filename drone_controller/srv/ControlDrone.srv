@@ -1,0 +1,5 @@
+# Request: A int of respond with apropriate command --> (1) Run_PID (2) Go_UP (3) Go_DOWN
+int64 command
+---
+# Return: String of Action to follow (1,2,3)
+string status
